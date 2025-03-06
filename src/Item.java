@@ -19,7 +19,11 @@ public class Item {
         return cost;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String itemData() {
-        return name + " " + cost + "€";
+        return getName() + " " + getCost() + "€";
     }
 }

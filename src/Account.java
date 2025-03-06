@@ -3,8 +3,8 @@ public class Account {
     private double balance;
     private Item[] inventory;
 
-    public Account(int Id, double bal, int inv) {
-        accountId = Id;
+    public Account(int id, double bal, int inv) {
+        accountId = id;
         setBalance(bal);
         inventory = new Item[inv];
     }
@@ -20,6 +20,11 @@ public class Account {
             balance = 0;
         }
     }
+
+    public double getBalance() {
+        return balance;
+    }
+
 
     public String accountData() {
         String data = "";
