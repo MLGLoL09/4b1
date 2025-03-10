@@ -10,11 +10,20 @@ public class PremiumAccount extends Account {
         feeCharged = false;
     }
 
-    public int setDiscountRate(int rate) {
+    public void setDiscountRate(int rate) {
         if(rate >= 0 && rate <= 100) {
-            return rate;
+            discountRate = rate;
+        } else {
+            discountRate = 0;
         }
-        return 0;
+    }
+
+    public void setFeeCharged(boolean charged) {
+        feeCharged = charged;
+    }
+
+    public boolean getFeeCharged() {
+        return feeCharged;
     }
 
     public void chargeMonthlyFee() {
@@ -30,7 +39,7 @@ public class PremiumAccount extends Account {
 
     @Override
     public boolean buyItem(Item item) {
-        double discountedPrice = item.getCost() - ((discountRate * item.getCost()) / 100);
+        double discountedPrice = item.getCost() - ((this.discountRate * item.getCost()) / 100);
         return super.buyItem(new Item(item.getName(), discountedPrice));
     }
 

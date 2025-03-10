@@ -25,6 +25,9 @@ public class Account {
         return balance;
     }
 
+    public Item[] getInventory() {
+        return inventory;
+    }
 
     public String accountData() {
         String data = "";
@@ -32,7 +35,7 @@ public class Account {
         data += "Balance: " + balance + "\n";
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] != null) {
-                data += "Inventory Item: " + inventory[i] + "\n";
+                data += "Inventory Item: " + inventory[i].itemData() + "\n";
             }
         }
         return data;
@@ -42,6 +45,7 @@ public class Account {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null && item.getCost() <= balance) {
                 inventory[i] = item;
+                balance -= item.getCost();
                 return true;
             }
         }
