@@ -1,4 +1,14 @@
+/**
+ * Dieses Programm erstellt Accounts mit einem bestimmten ID Kontostand und inventar größe man jkann aber auch einen premium account machen wo man schaen biller kaufen kann
+ * @author Sebastian Weigl
+ * @version 03-11-2025
+ */
+
 public class AccountTest {
+
+    /**
+     * Führt die testmethoden aus
+     */
     public static void main(String[] args) {
         testAccountCreation();
         testSetBalance();
