@@ -23,7 +23,20 @@ public class Item {
         return name;
     }
 
-    public String itemData() {
+    @Override
+    public String toString() {
         return getName() + " " + getCost() + "€";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Item i = (Item) o;
+        if (i.getName().equals(this.getName()) && i.getCost() == this.getCost()) return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode() + (int) cost;
     }
 }

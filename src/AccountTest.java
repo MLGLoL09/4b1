@@ -9,14 +9,12 @@ public class AccountTest {
         testFullItems();
 
 
-        // Zusätzliche Tests zur Ausgabe von Objektdaten
-        Account player1 = new Account(1, 100.0, 10);
-        System.out.println("Account 1: " + player1.accountData());
-
-        Account player2 = new Account(2, 100.0, 10);
-        System.out.println("Account 2: " + player2.accountData());
-
-        System.out.println("Vergleich Account 1 und Account 2: " + player1.equals(player2));
+        Account player1 = new Account(01, 100.0, 10);
+        System.out.println("Account: " + player1);
+        System.out.println(player1.hashCode());
+        Account player2 = new Account(01, 100.0, 10);
+        System.out.println("Vergleich: " + player1.equals(player2));
+        System.out.println(player2.hashCode());
     }
 
     /**
@@ -25,7 +23,7 @@ public class AccountTest {
      */
     public static void testAccountCreation() {
         Account acc = new Account(1, 100.0, 5);
-        System.out.println(acc.accountData());
+        System.out.println(acc.toString());
         if (acc.getBalance() == 100.0) {
             System.out.println("testAccountCreation passed");
         } else {
@@ -39,7 +37,7 @@ public class AccountTest {
      */
     public static void testSetBalance() {
         Account acc = new Account(2, -50.0);
-        System.out.println(acc.accountData());
+        System.out.println(acc.toString());
         if (acc.getBalance() == 0.0) {
             System.out.println("testSetBalance passed");
         } else {
@@ -55,7 +53,7 @@ public class AccountTest {
         Account acc = new Account(3, 200.0, 5);
         Item item = new Item("Laptop", 150.0);
         boolean result = acc.buyItem(item);
-        System.out.println(acc.accountData());
+        System.out.println(acc.toString());
         if (result) {
             System.out.println("testBuyItemSuccess passed");
         } else {
@@ -71,7 +69,7 @@ public class AccountTest {
         Account acc = new Account(4, 50.0, 5);
         Item item = new Item("Phone", 100.0);
         boolean result = acc.buyItem(item);
-        System.out.println(acc.accountData());
+        System.out.println(acc.toString());
         if (!result) {
             System.out.println("testBuyItemFailureDueToBalance passed");
         } else {
@@ -87,7 +85,7 @@ public class AccountTest {
         PremiumAccount pAcc = new PremiumAccount(10.0, 20, 5, 500.0, 5);
         Item item = new Item("Tablet", 100.0);
         pAcc.setFeeCharged(pAcc.buyItem(item));
-        System.out.println(pAcc.accountData());
+        System.out.println(pAcc.toString());
         if (pAcc.getFeeCharged()) {
             System.out.println("testPremiumAccountDiscount passed");
         } else {
@@ -102,7 +100,7 @@ public class AccountTest {
     public static void testChargeMonthlyFee() {
         PremiumAccount pAcc = new PremiumAccount(20.0, 10, 6, 200.0, 5);
         pAcc.chargeMonthlyFee();
-        System.out.println(pAcc.accountData());
+        System.out.println(pAcc.toString());
         if (pAcc.getBalance() == 180.0) {
             System.out.println("testChargeMonthlyFee passed");
         } else {
@@ -122,7 +120,7 @@ public class AccountTest {
         acc.buyItem(new Item("Desktop", 100.0));
         acc.buyItem(new Item("Monitor", 100.0));
         acc.buyItem(new Item("Printer", 100.0));
-        System.out.println(acc.accountData());
+        System.out.println(acc.toString());
         boolean isNull = false;
         for (int j = 0; j < acc.getInventory().length; j++) {
             if (acc.getInventory()[j] == null) {

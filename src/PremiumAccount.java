@@ -44,12 +44,12 @@ public class PremiumAccount extends Account {
     }
 
     @Override
-    public String accountData() {
+    public String toString() {
         String data = "";
         data += "Premium Account\n";
         data += "Premium Kosten: " + premiumFee + "\n";
         data += "Rabatt: " + discountRate + "\n";
-        data += super.accountData();
+        data += super.toString();
         data += "Rabatt abgezogen: " + feeCharged + "\n";
         return data;
     }

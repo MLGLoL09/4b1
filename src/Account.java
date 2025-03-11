@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Account {
     private int accountId;
     private double balance;
@@ -29,13 +31,14 @@ public class Account {
         return inventory;
     }
 
-    public String accountData() {
+    @Override
+    public String toString() {
         String data = "";
         data += "Account ID: " + accountId + "\n";
         data += "Balance: " + balance + "\n";
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] != null) {
-                data += "Inventory Item: " + inventory[i].itemData() + "\n";
+                data += "Inventory Item: " + inventory[i].toString() + "\n";
             }
         }
         return data;
@@ -50,5 +53,17 @@ public class Account {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Account a = (Account) o;
+        if (accountId == a.accountId && balance == a.balance && Arrays.equals(inventory, a.inventory)) return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return accountId + Double.hashCode(balance) + Arrays.hashCode(inventory);
     }
 }
